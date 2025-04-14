@@ -1,4 +1,4 @@
-name: ci
+name: Run Laravel Tests
 
 on:
   push:
@@ -21,6 +21,7 @@ jobs:
 
       - name: Install dependencies and set up Laravel
         run: |
+          cd ninjabasics
           composer install
           php artisan key:generate
           touch database/database.sqlite
@@ -28,5 +29,7 @@ jobs:
       - name: Run tests
         env:
           DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-        run: php artisan test
+          DB_DATABASE: ninjabasics/database/database.sqlite
+        run: |
+          cd ninjabasics
+          php artisan test
