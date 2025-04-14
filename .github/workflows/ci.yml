@@ -21,7 +21,7 @@ jobs:
 
       - name: Setup project
         run: |
-          cp .env.example .env
+          cp .env
           composer install
           php artisan key:generate
           touch database/database.sqlite
